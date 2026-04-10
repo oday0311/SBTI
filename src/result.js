@@ -1,7 +1,7 @@
 import { drawRadar } from './chart.js'
 import { generateShareImage } from './share.js'
+import { t } from './i18n.js'
 
-const LEVEL_LABEL = { L: '低', M: '中', H: '高' }
 const LEVEL_CLASS = { L: 'level-low', M: 'level-mid', H: 'level-high' }
 
 /**
@@ -55,7 +55,7 @@ export function renderResult(result, userLevels, dimOrder, dimDefs, config) {
     row.innerHTML = `
       <div class="dim-header">
         <span class="dim-name">${def.name}</span>
-        <span class="dim-level ${LEVEL_CLASS[level]}">${LEVEL_LABEL[level]}</span>
+        <span class="dim-level ${LEVEL_CLASS[level]}">${t('level-' + level)}</span>
       </div>
       <div class="dim-desc">${def.levels[level]}</div>
     `

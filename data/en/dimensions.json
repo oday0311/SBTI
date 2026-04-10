@@ -1,0 +1,203 @@
+{
+  "models": {
+    "S": {
+      "cn": "self model",
+      "en_approx": "Self Model",
+      "dimensions": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    "E": {
+      "cn": "emotion model",
+      "en_approx": "Emotion/Attachment Model",
+      "dimensions": [
+        "E1",
+        "E2",
+        "E3"
+      ]
+    },
+    "A": {
+      "cn": "attitude model",
+      "en_approx": "Attitude Model",
+      "dimensions": [
+        "A1",
+        "A2",
+        "A3"
+      ]
+    },
+    "Ac": {
+      "cn": "action drive model",
+      "en_approx": "Action Drive Model",
+      "dimensions": [
+        "Ac1",
+        "Ac2",
+        "Ac3"
+      ]
+    },
+    "So": {
+      "cn": "social model",
+      "en_approx": "Social Model",
+      "dimensions": [
+        "So1",
+        "So2",
+        "So3"
+      ]
+    }
+  },
+  "order": [
+    "S1",
+    "S2",
+    "S3",
+    "E1",
+    "E2",
+    "E3",
+    "A1",
+    "A2",
+    "A3",
+    "Ac1",
+    "Ac2",
+    "Ac3",
+    "So1",
+    "So2",
+    "So3"
+  ],
+  "definitions": {
+    "S1": {
+      "name": "S1 self-esteem and confidence",
+      "model": "自我模型",
+      "levels": {
+        "L": "He attacks himself more harshly than others, and you want to verify the authenticity of every compliment he says to you.",
+        "M": "The self-confidence value fluctuates with the weather. It can fly with the wind and shrink first against the wind.",
+        "H": "I have a general idea of ​​myself in my heart and am unlikely to be distracted by a passerby’s words."
+      }
+    },
+    "S2": {
+      "name": "S2 Self Clarity",
+      "model": "自我模型",
+      "levels": {
+        "L": "There are a lot of snowflakes in the inner channel, and they are often cached in a loop in \"Who Am I\".",
+        "M": "I can still recognize myself at ordinary times, but occasionally I am temporarily changed by my emotions.",
+        "H": "You have a clear understanding of your own temper, desires and bottom line."
+      }
+    },
+    "S3": {
+      "name": "S3 Core Values",
+      "model": "自我模型",
+      "levels": {
+        "L": "If you care more about comfort and safety, there is no need to rush into life every day.",
+        "M": "I want to make progress, but also want to relax for a while, and I often hold internal meetings on value ranking.",
+        "H": "It’s easy to be pushed forward by goals, growth, or some important belief."
+      }
+    },
+    "E1": {
+      "name": "E1 Attachment security",
+      "model": "情感模型",
+      "levels": {
+        "L": "The alarm in love is so sensitive that even if you can’t read it back, you can still imagine the ending.",
+        "M": "Half trusting, half testing, there is always a tug of war in the heart.",
+        "H": "I prefer to believe in the relationship itself and not be scared away by the slightest disturbance."
+      }
+    },
+    "E2": {
+      "name": "E2 emotional involvement",
+      "model": "情感模型",
+      "levels": {
+        "L": "Emotional investment tends to be restrained. It’s not that the door to the heart is not open, but that the door is too tightly guarded.",
+        "M": "You will be committed, but you will give yourself a backup plan, so that you will not go all out.",
+        "H": "Once identified, it is easy to be serious and full of emotions and energy."
+      }
+    },
+    "E3": {
+      "name": "E3 Boundaries and Dependencies",
+      "model": "情感模型",
+      "levels": {
+        "L": "It is easy to be clingy and easy to be clingy. The sense of warmth in a relationship is very important.",
+        "M": "It requires a little bit of intimacy and independence, and is an adjustable type of dependence.",
+        "H": "The sense of space is very important. No matter how much you love, you must leave a piece of land of your own."
+      }
+    },
+    "A1": {
+      "name": "A1 worldview tendency",
+      "model": "态度模型",
+      "levels": {
+        "L": "Look at the world with its own defensive filter. Be suspicious first, then get closer.",
+        "M": "Neither naive nor outright conspiracy theorist, it’s your instinct to wait and see.",
+        "H": "I am more willing to believe in human nature and goodwill, and not rush to sentence the world to death when trouble comes."
+      }
+    },
+    "A2": {
+      "name": "A2 Rules and Flexibility",
+      "model": "态度模型",
+      "levels": {
+        "L": "The rules can be circumvented, and comfort and freedom often come first.",
+        "M": "Be defensive when you need to be defensive, and don’t be stubborn when you need to be flexible.",
+        "H": "I have a strong sense of order and I don’t like to improvise if I can follow the process."
+      }
+    },
+    "A3": {
+      "name": "A3 Sense of meaning in life",
+      "model": "态度模型",
+      "levels": {
+        "L": "The sense of meaning is low, and it is easy to feel that many things are just going through the motions.",
+        "M": "Sometimes I have goals, sometimes I want to fail, and my outlook on life is half-activated.",
+        "H": "You have more direction in doing things and know roughly where you want to go."
+      }
+    },
+    "Ac1": {
+      "name": "Ac1 motivation orientation",
+      "model": "行动驱力模型",
+      "levels": {
+        "L": "Think in advance and don't overturn. The avoidance system is activated before ambition.",
+        "M": "Sometimes I want to win, sometimes I just want to stay out of trouble, the motivations are mixed.",
+        "H": "More likely to be ignited by a sense of achievement, growth, and advancement."
+      }
+    },
+    "Ac2": {
+      "name": "Ac2 decision-making style",
+      "model": "行动驱力模型",
+      "levels": {
+        "L": "It’s easy to turn around a few times before making a decision, and mental meetings often times out.",
+        "M": "I will think about it, but I won’t think about it. It’s a normal hesitation.",
+        "H": "He is quick to make decisions and does not like to look back after making a decision."
+      }
+    },
+    "Ac3": {
+      "name": "Ac3 execution mode",
+      "model": "行动驱力模型",
+      "levels": {
+        "L": "There is a deep relationship between execution and the dead line, and the later it gets, the more likely it is that it will wake up.",
+        "M": "It can be done, but the state depends on the timing, sometimes it is stable and sometimes it is unstable.",
+        "H": "The desire to push forward is relatively strong, and it feels like there is a thorn in my heart if things don't fall into place."
+      }
+    },
+    "So1": {
+      "name": "So1 social initiative",
+      "model": "社交模型",
+      "levels": {
+        "L": "Social networking is slow to start, and taking the initiative usually takes a while.",
+        "M": "If someone comes, you will be picked up, and if no one comes, you will not be forced to do so. Social flexibility is average.",
+        "H": "I am more willing to take the initiative to open up the scene, and I am not afraid of showing my face in the crowd."
+      }
+    },
+    "So2": {
+      "name": "So2 Sense of interpersonal boundaries",
+      "model": "社交模型",
+      "levels": {
+        "L": "In a relationship, you want to be close and integrated, and when you get acquainted, it is easy to put people into the inner circle.",
+        "M": "I want to be close but also want to leave gaps. The sense of boundary depends on the object.",
+        "H": "She has a strong sense of boundaries and will instinctively take half a step back if she gets too close."
+      }
+    },
+    "So3": {
+      "name": "So3 Expression and authenticity",
+      "model": "社交模型",
+      "levels": {
+        "L": "The expression is more direct, and I basically don’t like to dwell on what’s on my mind.",
+        "M": "You can speak according to the atmosphere, and usually leave a little bit of each in truth and decency.",
+        "H": "Be more proficient in self-switching between different scenes, and the sense of reality will be distributed in layers."
+      }
+    }
+  }
+}

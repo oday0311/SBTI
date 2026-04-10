@@ -33,6 +33,40 @@ body {
 }
 
 /* ========== Layout ========== */
+.lang-switch {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 100;
+  background: var(--card-bg);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.3s;
+}
+
+.lang-btn.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.lang-sep {
+  color: var(--border);
+}
+
 #app {
   max-width: var(--max-width);
   margin: 0 auto;

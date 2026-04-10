@@ -1,6 +1,7 @@
 import { calcDimensionScores, scoresToLevels, determineResult } from './engine.js'
 import { createQuiz } from './quiz.js'
 import { renderResult } from './result.js'
+import { i18n, currentLang, setLang, t } from './i18n.js'
 import './style.css'
 
 async function loadJSON(path) {
@@ -8,12 +9,35 @@ async function loadJSON(path) {
   return res.json()
 }
 
+function updateStaticUI() {
+  const keys = Object.keys(i18n[currentLang])
+  keys.forEach(key => {
+    const el = document.getElementById(key)
+    if (el) {
+      if (el.tagName === 'H1') el.innerHTML = t(key)
+      else el.textContent = t(key)
+    }
+  })
+  
+  document.title = t('doc-title')
+
+  // Update lang switch buttons
+  document.getElementById('btn-lang-zh').classList.toggle('active', currentLang === 'zh')
+  document.getElementById('btn-lang-en').classList.toggle('active', currentLang === 'en')
+}
+
+let currentQuiz = null
+
 async function init() {
+  updateStaticUI()
+
+  // Load JSON based on current lang
+  const langDir = currentLang === 'zh' ? 'zh' : 'en'
   const [questions, dimensions, types, config] = await Promise.all([
-    loadJSON(new URL('../data/questions.json', import.meta.url).href),
-    loadJSON(new URL('../data/dimensions.json', import.meta.url).href),
-    loadJSON(new URL('../data/types.json', import.meta.url).href),
-    loadJSON(new URL('../data/config.json', import.meta.url).href),
+    loadJSON(new URL(`../data/${langDir}/questions.json`, import.meta.url).href),
+    loadJSON(new URL(`../data/${langDir}/dimensions.json`, import.meta.url).href),
+    loadJSON(new URL(`../data/${langDir}/types.json`, import.meta.url).href),
+    loadJSON(new URL(`../data/${langDir}/config.json`, import.meta.url).href),
   ])
 
   const pages = {
@@ -36,17 +60,31 @@ async function init() {
     showPage('result')
   }
 
-  const quiz = createQuiz(questions, config, onQuizComplete)
+  currentQuiz = createQuiz(questions, config, onQuizComplete)
 
   document.getElementById('btn-start').addEventListener('click', () => {
-    quiz.start()
+    currentQuiz.start()
     showPage('quiz')
   })
 
   document.getElementById('btn-restart').addEventListener('click', () => {
-    quiz.start()
+    currentQuiz.start()
     showPage('quiz')
   })
 }
+
+document.getElementById('btn-lang-zh').addEventListener('click', () => {
+  if (currentLang !== 'zh') {
+    setLang('zh')
+    location.reload()
+  }
+})
+
+document.getElementById('btn-lang-en').addEventListener('click', () => {
+  if (currentLang !== 'en') {
+    setLang('en')
+    location.reload()
+  }
+})
 
 init()

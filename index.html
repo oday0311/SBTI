@@ -9,14 +9,19 @@
   <link rel="stylesheet" href="/src/style.css" />
 </head>
 <body>
+  <div class="lang-switch">
+    <button id="btn-lang-zh" class="lang-btn">中</button>
+    <span class="lang-sep">/</span>
+    <button id="btn-lang-en" class="lang-btn">EN</button>
+  </div>
   <div id="app">
     <!-- 首页 -->
     <section id="page-intro" class="page active">
       <div class="card intro-card">
-        <h1 class="intro-title">MBTI已经过时，<br/>SBTI来了。</h1>
+        <h1 class="intro-title" id="intro-title">MBTI已经过时，<br/>SBTI来了。</h1>
         <button id="btn-start" class="btn btn-primary">开始测试</button>
-        <p class="intro-credit">开源项目 · 基于 B站UP主@蛆肉儿串儿 原创测试</p>
-        <p class="intro-note">本测试仅供娱乐</p>
+        <p class="intro-credit" id="intro-credit">开源项目 · 基于 B站UP主@蛆肉儿串儿 原创测试</p>
+        <p class="intro-note" id="intro-note">本测试仅供娱乐</p>
       </div>
     </section>
 
@@ -45,16 +50,16 @@
         <div class="result-desc" id="result-desc"></div>
 
         <div class="result-secondary" id="result-secondary" style="display:none">
-          <div class="secondary-label">次要匹配</div>
+          <div class="secondary-label" id="secondary-label">次要匹配</div>
           <div class="secondary-info" id="secondary-info"></div>
         </div>
 
-        <h3 class="section-title">十五维度评分</h3>
+        <h3 class="section-title" id="title-dimensions">十五维度评分</h3>
         <canvas id="radar-chart" width="320" height="320"></canvas>
         <div class="dimensions-detail" id="dimensions-detail"></div>
 
         <div class="result-top3">
-          <h3 class="section-title">最佳匹配 TOP 5</h3>
+          <h3 class="section-title" id="title-top5">最佳匹配 TOP 5</h3>
           <div id="top-list"></div>
         </div>
 
@@ -66,12 +71,12 @@
         </div>
 
         <div class="agent-section">
-          <p class="agent-title">想自己搭一个？</p>
+          <p class="agent-title" id="agent-title">想自己搭一个？</p>
           <div class="agent-cmd">
             <code>git clone https://github.com/pingfanfan/SBTI.git && cd SBTI && npm install && npm run dev</code>
           </div>
           <button id="btn-agent" class="btn btn-agent">复制一键部署命令</button>
-          <p class="agent-hint">粘贴到 Claude Code / OpenClaw 即可一键运行并自定义</p>
+          <p class="agent-hint" id="agent-hint">粘贴到 Claude Code / OpenClaw 即可一键运行并自定义</p>
         </div>
       </div>
     </section>

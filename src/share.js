@@ -2,8 +2,9 @@
  * 生成分享图片 — 纯 Canvas 绘制，无外部依赖
  */
 
+import { t } from './i18n.js'
+
 const LEVEL_NUM = { L: 1, M: 2, H: 3 }
-const LEVEL_LABEL = { L: '低', M: '中', H: '高' }
 
 /**
  * 生成分享卡片并下载
@@ -117,7 +118,7 @@ export async function generateShareImage(primary, userLevels, dimOrder, dimDefs,
     ctx.textAlign = 'right'
     ctx.font = '600 14px system-ui, "PingFang SC", "Microsoft YaHei", sans-serif'
     ctx.fillStyle = val === 3 ? '#2d7a4a' : val === 2 ? '#4c6752' : '#b8860b'
-    ctx.fillText(LEVEL_LABEL[level], barX + barMaxW, y)
+    ctx.fillText(t('level-' + level), barX + barMaxW, y)
     ctx.textAlign = 'left'
 
     y += 26
