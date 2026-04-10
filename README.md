@@ -1,3 +1,52 @@
+SBTI Personality TestMBTI is outdated; SBTI has arrived.An open-source, entertainment-oriented personality test project based on the original test by Bilibili creator @蛆肉儿串儿.Live Demo👉 Click here to start the testOnline sample: https://cctor.com/sbti.htmlFeatures🧠 27 Personality Types — 25 standard types + 2 hidden/fallback types.📊 15 Assessment Dimensions — Covering five core models: Self, Emotion, Attitude, Action, and Social.🎯 Manhattan Distance Matching — A "scientific" matching algorithm based on a 15-dimensional vector.🍺 Hidden Easter Egg — Special trigger mechanism for the "Alcoholic" personality.📱 Mobile First — Responsive design optimized for smartphone experiences.🔧 Highly Customizable — Separation of data and code; customize the test simply by editing JSON files.Project StructurePlaintext├── data/                    # Test data (edit here to customize)
+│   ├── questions.json       # Questions and options
+│   ├── dimensions.json      # Definitions for the 15 dimensions
+│   ├── types.json           # Personality types and matching patterns
+│   └── config.json          # Scoring parameters and display config
+├── src/                     # Source code
+│   ├── engine.js            # Scoring algorithm (pure functions)
+│   ├── quiz.js              # Quiz flow control
+│   ├── result.js            # Result page rendering
+│   ├── chart.js             # Radar chart (Canvas API)
+│   ├── utils.js             # Utility functions
+│   ├── main.js              # Entry point
+│   └── style.css            # Styles (Themed via CSS variables)
+├── docs/
+│   └── analysis.md          # Data analysis report
+└── index.html
+Quick StartBash# Clone the project
+git clone https://github.com/pingfanfan/SBTI.git
+cd SBTI
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+Customize Your Own TestAll test content is located in the data/ directory. You can customize the entire experience by modifying JSON files without touching the core logic.1. Modify QuestionsEdit data/questions.json. Each question follows this structure:JSON{
+  "id": "q1",
+  "dim": "S1",
+  "text": "Your question text here",
+  "options": [
+    { "label": "Option A", "value": 1 },
+    { "label": "Option B", "value": 2 },
+    { "label": "Option C", "value": 3 }
+  ]
+}
+dim: Specifies which dimension the question belongs to.value: Scoring: 1 = Low, 2 = Medium, 3 = High.Note: Each dimension requires exactly 2 questions.2. Add New Personality TypesEdit data/types.json and add an entry to the standard array:JSON{
+  "code": "YOUR_CODE",
+  "pattern": "HHH-HMH-MHH-HHH-MHM",
+  "cn": "Type Name",
+  "intro": "One-line introduction",
+  "desc": "Detailed description..."
+}
+The pattern is a 15-letter L/M/H combination (mapped to dimensions: S1-S3, E1-E3, A1-A3, Ac1-Ac3, So1-So3), separated by hyphens.Scoring AlgorithmSummation: Scores from the 2 questions in each dimension are added (range: 2–6).Grading: $\le 3 \to L$ (Low), $4 \to M$ (Medium), $\ge 5 \to H$ (High).Vectorization: $L=1, M=2, H=3$ to generate a 15-dimensional numerical vector.Matching: Calculates the Manhattan Distance between the user's vector and every personality type.Ranking: Sorted by Distance (ascending) $\to$ Precise Hits (descending) $\to$ Similarity (descending).Override Priority: "Alcoholic" Egg > Standard Match > "Happy Fool" Fallback ($<60\%$ similarity).For details, see the Data Analysis Report.DeploymentGitHub Pages (Recommended): Fork the repo, go to Settings → Pages, and select GitHub Actions for automatic deployment.Vercel / Netlify: Connect your GitHub repo; it will recognize the Vite project with zero configuration.Manual: Run npm run build and deploy the dist/ folder to any static server.Tech StackVite — Build toolVanilla JavaScript — Framework-freeCanvas API — Radar chart renderingCSS Custom Properties — ThemingCreditsOriginal Test: Bilibili Creator @蛆肉儿串儿 (UID: 417038183)Original Version: Official Bilibili SBTI PageDisclaimerThis test is for entertainment purposes only. Do not use it for serious psychological assessment. This project is an open-source fan creation; please contact the maintainers if there are any copyright concerns.LicenseMIT
+
+
+
 # SBTI 人格测试
 
 > MBTI已经过时，SBTI来了。
@@ -7,6 +56,9 @@
 ## 在线体验
 
 👉 [点击开始测试](https://pingfanfan.github.io/SBTI/)
+
+online sample:   (https://cctor.com/sbti.html)
+
 
 ## 特性
 
@@ -168,3 +220,7 @@ npm run build
 ## License
 
 [MIT](LICENSE)
+
+
+
+
