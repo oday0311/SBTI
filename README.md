@@ -1,4 +1,28 @@
-SBTI Personality TestMBTI is outdated; SBTI has arrived.An open-source, entertainment-oriented personality test project based on the original test by Bilibili creator @蛆肉儿串儿.Live Demo👉 Click here to start the testOnline sample: https://cctor.com/sbti.htmlFeatures🧠 27 Personality Types — 25 standard types + 2 hidden/fallback types.📊 15 Assessment Dimensions — Covering five core models: Self, Emotion, Attitude, Action, and Social.🎯 Manhattan Distance Matching — A "scientific" matching algorithm based on a 15-dimensional vector.🍺 Hidden Easter Egg — Special trigger mechanism for the "Alcoholic" personality.📱 Mobile First — Responsive design optimized for smartphone experiences.🔧 Highly Customizable — Separation of data and code; customize the test simply by editing JSON files.Project StructurePlaintext├── data/                    # Test data (edit here to customize)
+# SBTI Personality Test
+
+> MBTI is outdated. SBTI has arrived.
+
+An open-source, entertainment-oriented personality test project based on the original test by Bilibili creator [@蛆肉儿串儿](https://space.bilibili.com/417038183).
+
+## Live Demo
+
+👉 [Click here to start the test](https://pingfanfan.github.io/SBTI/)
+
+Online sample: [https://cctor.com/sbti.html](https://cctor.com/sbti.html)
+
+## Features
+
+- 🧠 **27 Personality Types** — 25 standard types + 2 hidden/fallback types
+- 📊 **15 Assessment Dimensions** — Covering five core models: Self, Emotion, Attitude, Action, and Social
+- 🎯 **Manhattan Distance Matching** — A matching algorithm based on a 15-dimensional vector
+- 🍺 **Hidden Easter Egg** — Special trigger mechanism for the "Alcoholic" personality
+- 📱 **Mobile First** — Responsive design optimized for smartphone experiences
+- 🔧 **Highly Customizable** — Separation of data and code; customize the test by editing JSON files
+
+## Project Structure
+
+```plaintext
+├── data/                    # Test data (edit here to customize)
 │   ├── questions.json       # Questions and options
 │   ├── dimensions.json      # Definitions for the 15 dimensions
 │   ├── types.json           # Personality types and matching patterns
@@ -10,11 +34,16 @@ SBTI Personality TestMBTI is outdated; SBTI has arrived.An open-source, entertai
 │   ├── chart.js             # Radar chart (Canvas API)
 │   ├── utils.js             # Utility functions
 │   ├── main.js              # Entry point
-│   └── style.css            # Styles (Themed via CSS variables)
+│   └── style.css            # Styles (themed via CSS variables)
 ├── docs/
 │   └── analysis.md          # Data analysis report
 └── index.html
-Quick StartBash# Clone the project
+```
+
+## Quick Start
+
+```bash
+# Clone the project
 git clone https://github.com/pingfanfan/SBTI.git
 cd SBTI
 
@@ -26,7 +55,18 @@ npm run dev
 
 # Build for production
 npm run build
-Customize Your Own TestAll test content is located in the data/ directory. You can customize the entire experience by modifying JSON files without touching the core logic.1. Modify QuestionsEdit data/questions.json. Each question follows this structure:JSON{
+```
+
+## Customize Your Own Test
+
+All test content is located in the `data/` directory. You can customize the entire experience by modifying JSON files without touching the core logic.
+
+### Modify Questions
+
+Edit `data/questions.json`. Each question follows this structure:
+
+```json
+{
   "id": "q1",
   "dim": "S1",
   "text": "Your question text here",
@@ -36,14 +76,100 @@ Customize Your Own TestAll test content is located in the data/ directory. You c
     { "label": "Option C", "value": 3 }
   ]
 }
-dim: Specifies which dimension the question belongs to.value: Scoring: 1 = Low, 2 = Medium, 3 = High.Note: Each dimension requires exactly 2 questions.2. Add New Personality TypesEdit data/types.json and add an entry to the standard array:JSON{
-  "code": "YOUR_CODE",
+```
+
+- `dim` specifies which dimension the question belongs to
+- `value` scoring: 1 = Low, 2 = Medium, 3 = High
+- Each dimension requires exactly 2 questions
+
+### Add New Personality Types
+
+Edit `data/types.json` and add an entry to the `standard` array:
+
+```json
+{
+  "code": "YOUR",
   "pattern": "HHH-HMH-MHH-HHH-MHM",
   "cn": "Type Name",
   "intro": "One-line introduction",
   "desc": "Detailed description..."
 }
-The pattern is a 15-letter L/M/H combination (mapped to dimensions: S1-S3, E1-E3, A1-A3, Ac1-Ac3, So1-So3), separated by hyphens.Scoring AlgorithmSummation: Scores from the 2 questions in each dimension are added (range: 2–6).Grading: $\le 3 \to L$ (Low), $4 \to M$ (Medium), $\ge 5 \to H$ (High).Vectorization: $L=1, M=2, H=3$ to generate a 15-dimensional numerical vector.Matching: Calculates the Manhattan Distance between the user's vector and every personality type.Ranking: Sorted by Distance (ascending) $\to$ Precise Hits (descending) $\to$ Similarity (descending).Override Priority: "Alcoholic" Egg > Standard Match > "Happy Fool" Fallback ($<60\%$ similarity).For details, see the Data Analysis Report.DeploymentGitHub Pages (Recommended): Fork the repo, go to Settings → Pages, and select GitHub Actions for automatic deployment.Vercel / Netlify: Connect your GitHub repo; it will recognize the Vite project with zero configuration.Manual: Run npm run build and deploy the dist/ folder to any static server.Tech StackVite — Build toolVanilla JavaScript — Framework-freeCanvas API — Radar chart renderingCSS Custom Properties — ThemingCreditsOriginal Test: Bilibili Creator @蛆肉儿串儿 (UID: 417038183)Original Version: Official Bilibili SBTI PageDisclaimerThis test is for entertainment purposes only. Do not use it for serious psychological assessment. This project is an open-source fan creation; please contact the maintainers if there are any copyright concerns.LicenseMIT
+```
+
+`pattern` is a 15-letter L/M/H combination following the dimension order `S1-S3, E1-E3, A1-A3, Ac1-Ac3, So1-So3`, with each model separated by `-`.
+
+### Adjust Scoring Parameters
+
+Edit `data/config.json`:
+
+```json
+{
+  "scoring": {
+    "levelThresholds": { "L": [2, 3], "M": [4, 4], "H": [5, 6] },
+    "fallbackThreshold": 60
+  }
+}
+```
+
+### Modify Theme Styles
+
+Edit the CSS variables at the top of `src/style.css`:
+
+```css
+:root {
+  --bg: #f0f4f1;
+  --accent: #4c6752;
+  /* ... */
+}
+```
+
+## Scoring Algorithm
+
+1. **Summation**: Add the scores from the 2 questions in each dimension (range: 2-6)
+2. **Grading**: ≤3 → L (Low), 4 → M (Medium), ≥5 → H (High)
+3. **Vectorization**: Convert L=1, M=2, H=3 into a 15-dimensional numerical vector
+4. **Matching**: Calculate the Manhattan Distance between the user's vector and each personality type
+5. **Ranking**: Sort by Distance (ascending) → Precise Hits (descending) → Similarity (descending)
+6. **Override Priority**: "Alcoholic" Easter Egg > Standard Match > "Happy Fool" fallback (<60%)
+
+For details, see the [Data Analysis Report](docs/analysis.md).
+
+## Deployment
+
+### GitHub Pages (Recommended)
+
+Fork the repo, then go to Settings → Pages and select GitHub Actions for automatic deployment.
+
+### Vercel / Netlify
+
+Connect your GitHub repo and it will recognize the Vite project automatically.
+
+### Manual Deployment
+
+```bash
+npm run build
+# Deploy the dist/ directory to any static server
+```
+
+## Tech Stack
+
+- [Vite](https://vitejs.dev/) — Build tool
+- Vanilla JavaScript — Framework-free
+- Canvas API — Radar chart rendering
+- CSS Custom Properties — Theming
+
+## Credits
+
+- Original Test: Bilibili creator [@蛆肉儿串儿](https://space.bilibili.com/417038183) (UID: 417038183)
+- Original Version: [Official Bilibili SBTI Page](https://www.bilibili.com/blackboard/era/VxiCX2CRqcqzPK9F.html)
+
+## Disclaimer
+
+This test is for entertainment purposes only. Do not use it for any serious psychological assessment. This project is an open-source fan creation. Please contact the maintainers if there are any copyright concerns.
+
+## License
+
+[MIT](LICENSE)
 
 
 
@@ -220,7 +346,6 @@ npm run build
 ## License
 
 [MIT](LICENSE)
-
 
 
 
